@@ -251,6 +251,31 @@ body {
     cursor: pointer;
     font-weight: bold;
 }
+/* MOBILE RESPONSIVENESS FIX */
+@media (max-width: 768px) {
+    .news-item-card {
+        flex-direction: column; /* Stacks image on top of text */
+        max-width: 100% !important;
+        margin: 15px;
+    }
+
+    .news-thumbnail {
+        flex: 0 0 200px; /* Sets a fixed height for the image on mobile */
+        width: 100%;
+    }
+
+    .news-thumbnail img {
+        height: 200px; /* Keeps the image from getting too tall */
+    }
+
+    .news-info {
+        padding: 20px; /* Gives the text some breathing room on small screens */
+    }
+
+    .edu-grid {
+        grid-template-columns: 1fr; /* Stacks Educational cards in one column */
+    }
+}
 
 /* Add this to your CSS so images appear one after another */
 .slide:nth-child(1) { animation-delay: 0s; }

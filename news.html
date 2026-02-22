@@ -244,6 +244,31 @@
     border-top: 1px solid #eee;
     padding-top: 10px;
 }
+/* MOBILE RESPONSIVENESS FIX */
+@media (max-width: 768px) {
+    .news-item-card {
+        flex-direction: column; /* Stacks image on top of text */
+        max-width: 100% !important;
+        margin: 15px;
+    }
+
+    .news-thumbnail {
+        flex: 0 0 200px; /* Sets a fixed height for the image on mobile */
+        width: 100%;
+    }
+
+    .news-thumbnail img {
+        height: 200px; /* Keeps the image from getting too tall */
+    }
+
+    .news-info {
+        padding: 20px; /* Gives the text some breathing room on small screens */
+    }
+
+    .edu-grid {
+        grid-template-columns: 1fr; /* Stacks Educational cards in one column */
+    }
+}
 
     </style>
 </head>
@@ -315,6 +340,18 @@
             Contact: <a href="tel:+231888048104">+231 888 048 104</a>
         </p>
     </div>
+    <section class="like-section">
+    <div class="like-container">
+        <h3>Support Peace Island Progress</h3>
+        <p>If you support our community's road to Borough status, let us know!</p>
+        
+        <button id="likeBtn" class="like-button" onclick="handleLike()">
+            <span class="heart-icon">❤</span> Like this page
+        </button>
+        
+        <p id="likeMessage" class="hidden">Thank you for supporting the 540 Community!</p>
+    </div>
+</section>
 </footer>
 </body>
 </html> 
