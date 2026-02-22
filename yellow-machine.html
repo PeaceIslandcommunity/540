@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News - Peace Island Platform</title>
+    <style>
+        /* 1. BRANDING RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 2;
+            color: #222;
+            background-color:  #F1F8E9;
+        }
+
+        /* 2. HEADER & NAV (Matches Main Site) */
+        .site-header {
+            background-color: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .site-header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            background-color: #76b900;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 4px solid white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav-item.active {
+            background-color: white;
+            color: #333;
+            border-radius: 5px 5px 0 0;
+            padding-top: 15px;
+        }
+
+        /* 3. NEWS CARD STYLING */
+        .news-card {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 50px;
+            border-top: 8px solid #76b900; /* Changed to Brand Green */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dateline {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #777;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .lead-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #444;
+            border-left: 4px solid #76b900; /* Changed to Brand Green */
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            color: #76b900; /* Changed to Brand Green */
+        }
+        .news-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .stakeholders-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Responsive Fix for small screens */
+        @media (max-width: 600px) {
+            .stakeholders-list { grid-template-columns: 1fr; }
+            .news-title { font-size: 1.8rem; }
+        }
+        .share-container {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Wraps buttons on small phone screens */
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.2s, opacity 0.8s;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* WhatsApp Brand Color */
+.whatsapp {
+    background-color: #25D366;
+}
+
+.whatsapp::before {
+    content: '📱 ';
+}
+
+/* Messenger Brand Color */
+.messenger {
+    background-color: #0084FF;
+}
+
+.messenger::before {
+    content: '💬 ';
+}
+.img {
+    flex: 0 0 100px; /* This locks the image width to 200px */
+    height: 180px;    /* This locks the height */
+    overflow: hidden; /* Cuts off any part of the image that is too big */
+}
+/* This controls the box the image sits in */
+.news-thumbnail {
+    flex: 0 0 320px;  /* This forces the image width to be exactly 180px */
+    width: 250px;
+    height: 180px;     /* This locks the height to 150px */
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;  /* Cuts off the rest of the image if it's too big */
+    background-color: #f4f4f4; /* Light gray if image is missing */
+}
+
+/* This controls the actual image file inside the box */
+.news-thumbnail img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* IMPORTANT: This crops the image to fit the box perfectly without squishing it */
+    display: block;
+}
+
+/* Adjust the card container to match your screenshots */
+.news-item-card {
+    display: flex;
+    max-width: 1200px; /* Prevents the card from being too wide across the screen */
+    margin: 30px auto; /* Centers the card */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+.news-info{
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.green-text {
+    color: #76b900;
+    margin-top: 20px;
+}
+
+.source-footer {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+/* MOBILE RESPONSIVENESS FIX */
+@media (max-width: 768px) {
+    .news-item-card {
+        flex-direction: column; /* Stacks image on top of text */
+        max-width: 100% !important;
+        margin: 15px;
+    }
+
+    .news-thumbnail {
+        flex: 0 0 200px; /* Sets a fixed height for the image on mobile */
+        width: 100%;
+    }
+
+    .news-thumbnail img {
+        height: 200px; /* Keeps the image from getting too tall */
+    }
+
+    .news-info {
+        padding: 20px; /* Gives the text some breathing room on small screens */
+    }
+
+    .edu-grid {
+        grid-template-columns: 1fr; /* Stacks Educational cards in one column */
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Peace Island Platform</h1>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">HOME</a>
+            <a href="About_us.html" class="nav-item">ABOUT PEACE ISLAND</a>
+            <a href="news.html" class="nav-item active">NEWS</a>
+            <a href="Contact.html" class="nav-item">CONTACT</a>
+            <a href="#" class="nav-item">ARCHIVE</a>
+        </div>
+    </nav>
+    <div class="news-item-card" id="yellow-machines"></div>
+    <div class="news-thumbnail" alt="News Headline"></div>
+        <div class="news">INFRASTRUCTURE UPDATE</div>
+        <h3>137 Yellow Machines Officially Land at Freeport of Monrovia</h3>
+        <p class="article-meta">Published: February 22, 2026 | Reported by: Peace Island Media</p>
+
+        <div class="main-article-image">
+            <img src="yellow.PNG" alt="HJ SINGAPORE Vessel at Port">
+            <p class="image-caption">The vessel HJ SINGAPORE docked at the Freeport today with the first major consignment.</p>
+        </div>
+
+        <div class="article-content">
+            <p class="lead-text">
+                The Freeport of Monrovia was a scene of intense activity today as the vessel <strong>HJ SINGAPORE</strong> successfully docked, carrying a massive cargo of 137 heavy-duty "Yellow Machines."
+            </p>
+
+            <p>This arrival represents the first official batch of the government's 285-unit procurement deal intended to fix the nation's deplorable road networks. Unlike the initial sample machines seen last year, this shipment includes a full range of technical equipment, from high-capacity excavators to specialized service trucks.</p>
+
+            <div class="info-callout">
+                <h3>Arrival Details:</h3>
+                <ul>
+                    <li><strong>Vessel Name:</strong> HJ SINGAPORE</li>
+                    <li><strong>Total Machines:</strong> 137 Units</li>
+                    <li><strong>Supporting Gear:</strong> Multiple containers of spare parts and maintenance tools</li>
+                    <li><strong>Destination:</strong> National staging area before county distribution</li>
+                </ul>
+            </div>
+
+            <p>During the offloading process, officials from the Yellow Machines Board of Authority (YMBOA) emphasized that these machines are part of a transparent $22 million deal. The equipment is scheduled to be distributed to all 15 counties, with each county expected to receive its own dedicated fleet for road maintenance.</p>
+
+            <p>For our community on Peace Island, this is a significant step. Improved road infrastructure means better access for transport, lower costs for goods, and a stronger connection between the 540 Community and the heart of Monrovia.</p>
+        <div class="article-content">
+    <p class="lead-text">
+        The arrival of the first batch of 137 'Yellow Machines' aboard the <strong>HJ SINGAPORE</strong> marks a transformative moment in Liberia’s journey toward national connectivity.
+    </p>
+
+    <p>For decades, many communities across the country, including those in Montserrado and the leeward counties, have suffered from seasonal isolation due to impassable roads. These heavy-duty assets—ranging from dozers and excavators to specialized fuel and water tankers—are designed to change that narrative by decentralizing road maintenance capacity directly to the 15 counties.</p>
+
+    <p>This $22 million procurement deal, finalized after months of rigorous negotiation and transparency reviews, is more than just a purchase of hardware; it is an investment in the <strong>ARREST agenda</strong>. By establishing a dedicated fleet for each county, the government aims to empower local public works units to fix feeder roads and farm-to-market corridors without relying solely on private contractors.</p>
+
+    <div class="info-callout">
+        <h3>Why This Matters to Peace Island:</h3>
+        <p>Improved road infrastructure means better access for transport, lower costs for goods, and a stronger connection between the 540 Community and the heart of Monrovia.</p>
+    </div>
+
+    <p>For our residents on Peace Island, this infrastructure revolution offers a clear path toward better economic opportunities and more reliable access to essential services like healthcare and education. The machines represent a new era of governance where road connectivity is no longer a slogan, but a reality.</p>
+</div>
+        </div>
+
+        <div class="share-container">
+    <p>Share this urgent update with the community:</p>
+    <div class="share-buttons">
+        <a href="whatsapp://send?text=Urgent News from Peace Island Platform: Meeting on Land Rights and Status. Read more here: [http://127.0.0.1:5500/Peace_Island_Forum/P-Is;land.html]" class="share-btn whatsapp">
+            <span>WhatsApp</span>
+        </a>
+
+        <a href="fb-messenger://share/?link=[http://127.0.0.1:5500/Peace_Island_Forum/P-Is;land.html]&app_id=123456789" class="share-btn messenger">
+            <span>Messenger</span>
+        </a>
+        <a href="P-Is;land.html" position="left" style="color: #2980b9;">Back &rarr;</a>
+    </div>
+    
+</div>
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 Peace Island Platform. All rights reserved.</p>
+        <p class="developer-credit">
+            Developed by <a href="contact.html">Alvin D. Carr</a> | 
+            Contact: <a href="tel:+231888048104">+231 888 048 104</a>
+        </p>
+    </div>
+    <section class="like-section">
+    <div class="like-container">
+        <h3>Support Peace Island Progress</h3>
+        <p>If you support our community's road to Borough status, let us know!</p>
+        
+        <button id="likeBtn" class="like-button" onclick="handleLike()">
+            <span class="heart-icon">❤</span> Like this page
+        </button>
+        
+        <p id="likeMessage" class="hidden">Thank you for supporting the 540 Community!</p>
+    </div>
+</section>
+</footer>
+</body>
+</html> 
