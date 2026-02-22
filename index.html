@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peace Island Community Portal</title>
+    <style>
+    
+       /* 1. THE RESET: This removes all default grey margins from the browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F1F8E9;
+    overflow-x: hidden;
+   Text-color: #333333;
+}
+
+/* 2. THE SLIDESHOW CONTAINER: Ensures it fills the width and height */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Adjust this height to your preference */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: slideFade 12s infinite;
+}
+
+/* The dark tint is now built into the slide to ensure text is always readable */
+.slide::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust 0.5 for darker/lighter images */
+}
+
+/* 3. THE TEXT OVERLAY: Positioned on top of the slideshow */
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+/* 4. THE GREEN NAVIGATION: Attached directly at the bottom of the slideshow */
+.main-nav {
+    background-color: #76b900;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: flex-end; /* Keeps the white 'HOME' tab at the bottom */
+}
+
+.nav-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nav-item.active {
+    background-color: white;
+    color: #333;
+    border-radius: 5px 5px 0 0;
+    padding-top: 15px; /* Makes the active tab pop up slightly */
+}
+
+/* Animation Keyframes */
+@keyframes slideFade {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    33% { opacity: 1; }
+    43% { opacity: 0; }
+    100% { opacity: 0; }
+}
+.news-headlines-list {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.headline-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headline-item h4 {
+    color: #333;
+    font-size: 1.1rem;
+}
+.news-section-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.news-item-card {
+    display: flex; /* This creates the side-by-side columns */
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.news-thumbnail {
+    flex: 0 0 320px; /* Forces the image box width */
+    height: auto;
+}
+
+.news-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image stretching */
+    display: block;
+}
+
+.news-info {
+    flex: 1; /* Allows text box to fill the rest of the card */
+    padding: 25px 35px;
+    text-align: left;
+}
+
+.news-category {
+    color: #76b900;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.header-banner {
+    background: #f1f8e9;
+    padding: 10px 15px;
+    border-left: 5px solid #76b900;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.read-more-btn {
+    display: inline-block;
+    margin-top: 15px;
+    color: #76b900;
+    text-decoration: none;
+    font-weight: bold;
+}
+/* Container and General Style */
+.news-main-container {
+    max-width: 1050px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+}
+
+.news-item-card {
+    display: flex; /* Forces side-by-side alignment */
+    background: #fff;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+/* Fixes the image size on the left */
+.news-thumbnail {
+    flex: 0 0 320px; /* Locked width */
+    height: 220px;    /* Locked height */
+}
+
+.news-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents image stretching */
+}
+
+/* Info area on the right */
+.news-info {
+    padding: 25px 35px;
+    flex: 1;
+}
+
+.news-category {
+    color: #76b900;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* Educational Cards Grid */
+.edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.edu-card {
+    background: #fdfdfd;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.download-btn {
+    background-color: #76b900;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Add this to your CSS so images appear one after another */
+.slide:nth-child(1) { animation-delay: 0s; }
+.slide:nth-child(2) { animation-delay: 4s; }
+.slide:nth-child(3) { animation-delay: 8s; }
+    </style>
+</head>
+<body>
+   <header class="hero-section">
+    <div class="slideshow">
+        <div class="slide" style="background-image: url('b1.jpg');"></div>
+        <div class="slide" style="background-image: url('B.jpg');"></div>
+        <div class="slide" style="background-image: url('B.jpg');"></div>
+    </div>
+    
+    <div class="hero-content">
+        <hr style="width: 50px; border: 1px solid white; margin: 0 auto 20px auto;">
+        <h1>PEACE ISLAND PLATFORM</h1>
+        <p style="font-size: 1.5rem;">News, History, and Education</p>
+        <p style="max-width: 600px; margin: 20px auto;">A dedicated space for our community to stay informed, honor our heritage, and access learning materials.</p>
+
+    </div>
+</header>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="#" class="nav-item active">HOME</a>
+        <a href="About_us.html" class="nav-item">ABOUT US</a>
+        <a href="news.html" class="nav-item">NEWS</a>
+        <a href="Contact.html" class="nav-item">CONTACT</a>
+        <a href="#" class="nav-item">ARCHIVE</a>
+    </div>
+</nav>
+    <div class="news-main-container">
+
+    <div class="news-item-card" id="land-rights">
+        <div class="news-thumbnail">
+            <img src="l.jpg" alt="Urgent Meeting">
+        </div>
+        <div class="news-info">
+            <span class="news-category">LATEST UPDATE</span>
+            <h3>Urgent Meeting: Land Rights</h3>
+            <p class="dateline">FEBRUARY 20, 2026</p>
+            <p>Leaders gathered today to discuss the legal status of the 540 community...</p>
+            <a href="news.html#land-rights" class="read-more-btn">Read Full Update</a>
+        </div>
+    </div>
+
+    <div class="news-item-card" id="Status-Right">
+        <div class="news-thumbnail">
+            <img src="P.jpg" alt="Borough Status Update">
+        </div>
+        <div class="news-info">
+            <span class="news-category">LATEST UPDATE</span>
+            <h3>A Road to Peace Island Status Right</h3>
+            <p class="dateline">February 20, 2026</p>
+            <p>House passes act to transform Peace Island into a formal Borough...</p>
+            <a href="news1.html" class="read-more-btn">Read Full Update</a>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <h2 class="section-title">Educational Materials</h2>
+    <div class="edu-grid">
+        <div class="edu-card">
+            <h3>Introduction to Civics (PDF)</h3>
+            <p>A guide to how our national government structures work. Great for students!</p>
+            <button class="download-btn">Download Material</button>
+        </div>
+
+        <div class="edu-card">
+            <h3>Our Local History: Volume 1</h3>
+            <p>Explore the origins of our community from 1950 to 2000.</p>
+            <button class="download-btn">Download Material</button>
+        </div>
+    </div>
+
+</div>
+</div>
+    <footer>
+        <p>&copy; 2026 Community Information Portal</p>
+    </footer>
+    <footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 Peace Island Platform. All rights reserved.</p>
+        <p class="developer-credit">
+            Developed by <a href="contact.html">Alvin D. Carr</a> | 
+            Contact: <a href="tel:+231888048104">+231 888 048 104</a>
+        </p>
+    </div>
+    <section class="like-section">
+    <div class="like-container">
+        <h3>Support Peace Island Progress</h3>
+        <p>If you support our community's road to Borough status, let us know!</p>
+        
+        <button id="likeBtn" class="like-button" onclick="handleLike()">
+            <span class="heart-icon">❤</span> Like this page
+        </button>
+        
+        <p id="likeMessage" class="hidden">Thank you for supporting the 540 Community!</p>
+    </div>
+</section>
+</footer>
+
+</body>
+</html>

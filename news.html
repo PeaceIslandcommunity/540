@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest News - Peace Island Platform</title>
+    <style>
+        /* 1. BRANDING RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 2;
+            color: #222;
+            background-color:  #F1F8E9;
+        }
+
+        /* 2. HEADER & NAV (Matches Main Site) */
+        .site-header {
+            background-color: #333;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .site-header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .main-nav {
+            background-color: #76b900;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 4px solid white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .nav-item.active {
+            background-color: white;
+            color: #333;
+            border-radius: 5px 5px 0 0;
+            padding-top: 15px;
+        }
+
+        /* 3. NEWS CARD STYLING */
+        .news-card {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 50px;
+            border-top: 8px solid #76b900; /* Changed to Brand Green */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .dateline {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #777;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .news-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .lead-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #444;
+            border-left: 4px solid #76b900; /* Changed to Brand Green */
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 10px;
+            margin-top: 30px;
+            color: #76b900; /* Changed to Brand Green */
+        }
+        .news-info p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .stakeholders-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+        }
+
+        /* Responsive Fix for small screens */
+        @media (max-width: 600px) {
+            .stakeholders-list { grid-template-columns: 1fr; }
+            .news-title { font-size: 1.8rem; }
+        }
+        .share-container {
+    margin-top: 40px;
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Wraps buttons on small phone screens */
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: transform 0.2s, opacity 0.8s;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+/* WhatsApp Brand Color */
+.whatsapp {
+    background-color: #25D366;
+}
+
+.whatsapp::before {
+    content: '📱 ';
+}
+
+/* Messenger Brand Color */
+.messenger {
+    background-color: #0084FF;
+}
+
+.messenger::before {
+    content: '💬 ';
+}
+.img {
+    flex: 0 0 100px; /* This locks the image width to 200px */
+    height: 150px;    /* This locks the height */
+    overflow: hidden; /* Cuts off any part of the image that is too big */
+}
+/* This controls the box the image sits in */
+.news-thumbnail {
+    flex: 0 0 320px;  /* This forces the image width to be exactly 180px */
+    width: 250px;
+    height: 180px;     /* This locks the height to 150px */
+    border-radius: 8px 0 0 8px;
+    overflow: hidden;  /* Cuts off the rest of the image if it's too big */
+    background-color: #f4f4f4; /* Light gray if image is missing */
+}
+
+/* This controls the actual image file inside the box */
+.news-thumbnail img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* IMPORTANT: This crops the image to fit the box perfectly without squishing it */
+    display: block;
+}
+
+/* Adjust the card container to match your screenshots */
+.news-item-card {
+    display: flex;
+    max-width: 1200px; /* Prevents the card from being too wide across the screen */
+    margin: 30px auto; /* Centers the card */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+.news-info{
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+.green-text {
+    color: #76b900;
+    margin-top: 20px;
+}
+
+.source-footer {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Peace Island Platform</h1>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="P-Is;land.html" class="nav-item">HOME</a>
+            <a href="About_us.html" class="nav-item">ABOUT US</a>
+            <a href="news.html" class="nav-item active">NEWS</a>
+            <a href="Contact.html" class="nav-item">CONTACT</a>
+            <a href="#" class="nav-item">ARCHIVE</a>
+        </div>
+    </nav>
+
+    <div class="news-item-card"
+    id="land-rights">
+        <div class="news-thumbnail">
+            <img src="l.jpg"
+    alt="News Headline">
+    </div>
+    <div class="news-info">
+        <span
+    class="news-category">LATEST UPDATE</span>
+        <h3>Urgent Meeting: Land Rights</h3>
+         <div class="dateline">Peace Island, Congo Town | February 15, 2026</div>
+        <p class="news-excerpt"></p>
+            Leaders of the Peace Island community (540) gathered today for an emergency session to address the legal status of the community following a high-profile visit from the Congo Township Commissioner.
+        </p>
+
+        <p>The meeting was prompted by growing concerns regarding the "Status Rights" of the over 60,000 residents living within the historic settlement. The visit of the Township Commissioner has sparked a renewed dialogue on how the community is recognized by the government and what protections are in place for the families of the veterans who first settled the area.</p>
+
+        <h3>Key Participants in Attendance:</h3>
+        <div class="stakeholders-list">
+            <div><strong>• Community Elders:</strong> Representing the original "540" settlers and historical memory.</div>
+            <div><strong>• Youth Leadership:</strong> Advocating for the future development and energy of the island.</div>
+            <div><strong>• Intellectuals Forum:</strong> Providing technical and legal insights into the status rights.</div>
+            <div><strong>• Local Stakeholders:</strong> Business owners and family heads invested in the island's stability.</div>
+        </div>
+
+        <h3>The Core Issues</h3>
+        <p>The discussion focused heavily on the formal recognition of Peace Island as a permanent residential zone. Residents expressed a unified front, stating that the history of the soldiers who founded the community with their 540 LD benefits grants the inhabitants a moral and historical claim to the land.</p>
+
+        <p>The Intellectuals emphasized the need for a formal legal framework to ensure that the visit of the Township Commission leads to <strong>positive development</strong> rather than displacement or administrative overreach.</p>
+
+       <div class="share-container">
+    <p>Share this urgent update with the community:</p>
+    <div class="share-buttons">
+        <a href="whatsapp://send?text=Urgent News from Peace Island Platform: Meeting on Land Rights and Status. Read more here: [http://127.0.0.1:5500/Peace_Island_Forum/P-Is;land.html]" class="share-btn whatsapp">
+            <span>WhatsApp</span>
+        </a>
+
+        <a href="fb-messenger://share/?link=[http://127.0.0.1:5500/Peace_Island_Forum/P-Is;land.html]&app_id=123456789" class="share-btn messenger">
+            <span>Messenger</span>
+        </a>
+        <a href="P-Is;land.html" position="left" style="color: #2980b9;">Back &rarr;</a>
+    </div>
+    
+</div>
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 Peace Island Platform. All rights reserved.</p>
+        <p class="developer-credit">
+            Developed by <a href="contact.html">Alvin D. Carr</a> | 
+            Contact: <a href="tel:+231888048104">+231 888 048 104</a>
+        </p>
+    </div>
+</footer>
+</body>
+</html> 

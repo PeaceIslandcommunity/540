@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Peace Island Platform</title>
+    <style>
+        /* 1. RESET & GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color:  #F1F8E9;
+        }
+
+        /* 2. HEADER STYLE (Matches Main Site) */
+        .about-header {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        /* 3. GREEN NAVIGATION BAR */
+        .main-nav {
+            background-color: #76b900;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 4px solid white;
+        }
+
+        .nav-container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* This makes the ABOUT US tab white on this page */
+        .nav-item.active {
+            background-color: white;
+            color: #333;
+            border-radius: 5px 5px 0 0;
+            padding-top: 15px;
+        }
+
+        /* 4. CONTENT CONTAINER */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #76b900; /* Green to match the theme */
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #c0392b; /* Red for the 540 legacy */
+        }
+
+        blockquote {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-left: 5px solid #76b900;
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 30px;
+            padding: 20px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="about-header">
+        <h1>PEACE ISLAND PLATFORM</h1>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="P-Is;land.html" class="nav-item">HOME</a>
+            <a href="About_us.html" class="nav-item active">ABOUT US</a>
+            <a href="news.html" class="nav-item">NEWS</a>
+            <a href="Contact.html" class="nav-item">CONTACT</a>
+            <a href="#" class="nav-item">ARCHIVE</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>The Living History of Peace Island</h2>
+        <p>Located within the heart of <strong>Congo Town</strong> in Montserrado County, Peace Island is more than just a geographic location; it is a testament to resilience and the pursuit of stability in post-war Liberia.</p>
+
+        <h2>The "540" Legacy</h2>
+        <p>While officially known as Peace Island, the community is most famously referred to by locals as <span class="highlight">"540"</span>. This name originates from the aftermath of the Liberian Civil War.</p>
+        
+        <p>Following the conflict, the Government of Liberia (GOL) provided a benefit of <strong>540 Liberian Dollars (LD)</strong> to soldiers. many of these soldiers and their families took their benefits and settled in this marshy terrain to build a future.</p>
+
+        <h2>Growth and Population</h2>
+        <p>Today, Peace Island is home to over <strong>60,000 Liberians</strong>. It has transformed from a quiet refuge into a bustling hub of commerce and family life.</p>
+
+        <blockquote>
+            "540 isn't just a number; it represents the beginning of peace for those who saw the hardest days of the conflict."
+        </blockquote>
+    
+    <p>The land behind the EJS Minsiterial Complex in Congo Town had been left untouched throughout Liberia’s history.
+
+But it quickly became home to thousands of Liberians who had been displaced during the war, and who sought stability, and land, on which they could rebuild their lives.
+
+Peace Island has lived up to its name. But now the residents are uniting against another challenge: the basic infrastructure its residents need to survive, government-supported schools and clinics.
+
+Government support has been slow to come for the community, mostly because residents on Peace Island live as squatters on private land, not officially recognized by government.
+
+The over 60,000 people in Peace Island have access to only two hand pumps but the safe water becomes dirty during raining season because surrounding wetlands are used as toilets by many in the community.</p></div>
+
+    <footer>
+        <p>Peace Island Community History &copy; 2026</p>
+    </footer>
+    <footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 Peace Island Platform. All rights reserved.</p>
+        <p class="developer-credit">
+            Developed by <a href="contact.html">Alvin D. Carr</a> | 
+            Contact: <a href="tel:+231888048104">+231 888 048 104</a>
+        </p>
+    </div>
+    <section class="like-section">
+    <div class="like-container">
+        <h3>Support Peace Island Progress</h3>
+        <p>If you support our community's road to Borough status, let us know!</p>
+        
+        <button id="likeBtn" class="like-button" onclick="handleLike()">
+            <span class="heart-icon">❤</span> Like this page
+        </button>
+        
+        <p id="likeMessage" class="hidden">Thank you for supporting the 540 Community!</p>
+    </div>
+</section>
+</footer>
+
+</body>
+</html>
